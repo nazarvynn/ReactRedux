@@ -1,0 +1,16 @@
+{
+  "name": "react-redux",
+  "version": "1.0.0",
+  "description": "React appliccation",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nazarvynn/ReactRedux.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nazarvynn/ReactRedux/issues"
+  },
+  "homepage": "https://github.com/nazarvynn/ReactRedux#readme",
+  "author": "Nazar Vynnytskyi",
+  "license": "MIT"
+}
