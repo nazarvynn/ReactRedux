@@ -8,11 +8,11 @@ class Page extends Component {
     render() {
         const { year, photos } = this.props;
 
-        return <div>
+        return <div className="ib page">
             <p>
-                <button onClick={::this.onClickYearBtn}>2016</button>
-                <button onClick={::this.onClickYearBtn}>2015</button>
-                <button onClick={::this.onClickYearBtn}>2014</button>
+                <button className="btn" onClick={::this.onClickYearBtn}>2016</button>
+                <button className="btn" onClick={::this.onClickYearBtn}>2015</button>
+                <button className="btn" onClick={::this.onClickYearBtn}>2014</button>
             </p>
             <h3>{year} year</h3>
             <p>You have {photos.length} photos</p>
