@@ -3,10 +3,10 @@ import React, { Component, PropTypes } from 'react'
 class Page extends Component {
     onClickYearBtn(event) {
         let year = +event.target.innerText;
-        this.props.setYear(year);
+        this.props.getPhotos(year);
     }
     render() {
-        const { year, photos } = this.props;
+        const { year, photos, loading } = this.props;
 
         return <div className="ib page">
             <p>
@@ -15,7 +15,7 @@ class Page extends Component {
                 <button className="btn" onClick={::this.onClickYearBtn}>2014</button>
             </p>
             <h3>{year} year</h3>
-            <p>You have {photos.length} photos</p>
+            {loading ? <p>loading...</p> : <p>You have {photos.length} photos</p> }
         </div>;
     }
 }
@@ -23,7 +23,7 @@ class Page extends Component {
 Page.propTypes = {
     year: PropTypes.number.isRequired,
     photos: PropTypes.array.isRequired,
-    setYear: PropTypes.func.isRequired
+    getPhotos: PropTypes.func.isRequired
 };
 
 export default Page;
