@@ -2,14 +2,26 @@ import React, { Component, PropTypes } from 'react'
 
 class User extends Component {
     render() {
-        const { name } = this.props;
+        const { name, error, handleLogin } = this.props;
+        let template;
 
-        return <div className="ib user"><p>Hello {name}!</p></div>;
+        if (name) {
+            template = <p>Hello {name}!</p>
+        } else {
+            template = <button className='btn' onClick={handleLogin}>Login</button>
+        }
+
+        return <div className="ib user">
+            {template}
+            {error ? <p className='error'> {error}. <br />Try again</p> : ''}
+        </div>;
     }
 }
 
 User.propTypes = {
-    name: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
+    error: PropTypes.string.isRequired,
+    handleLogin: PropTypes.func.isRequired
 };
 
 export default User;
