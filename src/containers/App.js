@@ -13,7 +13,7 @@ class App extends Component {
         const { handleLogin } = this.props.userActions;
 
         return <div className="row">
-            <Page year={page.year} photos={page.photos} getPhotos={getPhotos} loading={page.loading} />
+            <Page year={page.year} photos={page.photos} getPhotos={getPhotos} error={page.error} loading={page.loading} />
             <User name={user.name} error={user.error} handleLogin={handleLogin} />
         </div>
     }

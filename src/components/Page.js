@@ -6,16 +6,16 @@ class Page extends Component {
         this.props.getPhotos(year);
     }
     render() {
-        const { year, photos, loading } = this.props;
+        const { year, photos, loading, error } = this.props;
+        const years = [2016, 2015, 2014, 2013, 2012, 2011, 2010];
 
         return <div className="ib page">
             <p>
-                <button className="btn" onClick={::this.onClickYearBtn}>2016</button>
-                <button className="btn" onClick={::this.onClickYearBtn}>2015</button>
-                <button className="btn" onClick={::this.onClickYearBtn}>2014</button>
+                {years.map((year, index)=> <button className='btn' key={index} onClick={::this.onClickYearBtn}>{year}</button>)}
             </p>
-            <h3>{year} year</h3>
-            {loading ? <p>loading...</p> : <p>You have {photos.length} photos</p> }
+            <h3>{year} year [{photos.length}]</h3>
+            {error ? <p className='error'>Error: {error}</p> : ''}
+            {loading ? <p>loading...</p> : photos.map((photo, index) => <div key={index} className='photo'><p><img src={photo.src} /></p><p>{photo.likes.count} ❤</p></div>)}
         </div>;
     }
 }
@@ -23,7 +23,8 @@ class Page extends Component {
 Page.propTypes = {
     year: PropTypes.number.isRequired,
     photos: PropTypes.array.isRequired,
-    getPhotos: PropTypes.func.isRequired
+    getPhotos: PropTypes.func.isRequired,
+    error: PropTypes.string.isRequired
 };
 
 export default Page;
